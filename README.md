@@ -1,7 +1,7 @@
 ## About The Project
 The infinite monkey method of creating your perfect workflow for ComfyUI. My first project and it's a work in progress so keep expectations low.
 
-### Prerequisites
+## Prerequisites
 * ComfyScript, install instructions at https://github.com/Chaoses-Ib/ComfyScript
 * WAS Node Suite, install via Comfy-manager or https://github.com/WASasquatch/was-node-suite-comfyui
 * AutomaticCFG, install via Comfy-manager or https://github.com/Extraltodeus/ComfyUI-AutomaticCFG
@@ -12,7 +12,7 @@ The infinite monkey method of creating your perfect workflow for ComfyUI. My fir
   pip install "dynamicprompts[magicprompt]"
   ```
 
-### Installation
+## Installation
 Put randomize.py and randomize.yml in a subfolder of ComfyScript
 e.g ComfyUI\custom_nodes\ComfyScript\scripts\Randomizer
 
@@ -30,3 +30,4 @@ To run the randomizer.
 ## Examples
 Cherry picked from 200 generated images
 
+https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0002.png
