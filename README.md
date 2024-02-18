@@ -1,6 +1,8 @@
 ## About The Project
 The infinite monkey method of creating your perfect workflow for ComfyUI. My first project and it's a work in progress so keep expectations low. As it is now the yaml file can be confusing and a pain to edit, probably should have some experience with python/yaml and patience.
 
+So what are the advantages of using this over the web-ui? I know a lot of randomizing can be done in the web-ui, but probably not everything that is done here, haven't tried it myself though. One big advantage is that the resulting workflow is a lot cleaner using this script. Another advantage for me at least is better memory management, I can merge 6 checkpoints no problem where as in the web-ui it would have crashed my computer.
+
 ## Prerequisites
 * ComfyScript, install instructions at https://github.com/Chaoses-Ib/ComfyScript
 * WAS Node Suite, install via Comfy-manager or https://github.com/WASasquatch/was-node-suite-comfyui
@@ -30,8 +32,9 @@ To run the randomizer. The resulting images can be loaded in ComfyUI web-ui.
 ## TODO
 * A GUI for the settings would be great, but probably not going to happen.
 * Random shape/gradients blending (almost done)
-* Random regional prompts using color segmentation
-* Other small things like random VAE
+* Random regional prompts using color segmentation, maybe
+* Other small things like random VAE and image save options
+* Upscaler version of this script
 
 ## Examples
 Cherry picked from 200 generated images using prompt "monkey typing on a typewriter"
