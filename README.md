@@ -25,9 +25,40 @@ to get a list of all models, useful when editing the yaml file.
 ```sh
 python randomizer.py
 ```
-To run the randomizer.
+To run the randomizer. The resulting images can be loaded in ComfyUI web-ui.
 
 ## Examples
-Cherry picked from 200 generated images
+Cherry picked from 200 generated images using prompt "monkey typing on a typewriter"
 
 ![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0002.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0003.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0005.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0006.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0010.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0014.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0015.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0018.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0028.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0031.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0034.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0037.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0040.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0041.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0047.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0050.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0054.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0057.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0058.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0065.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0066.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0070.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0072.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0076.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0080.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0083.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0087.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0088.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0094.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0095.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0098.png)
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0099.png)
