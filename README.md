@@ -1,5 +1,5 @@
 ## About The Project
-The infinite monkey method of creating your perfect workflow for ComfyUI. My first project and it's a work in progress so keep expectations low. As it is now the yaml file can be confusing and a pain to edit, probably should have some experience with python/yaml and patience.
+The infinite monkey method of creating your perfect workflow for ComfyUI. My first project and it's a work in progress so keep expectations low. As it is now the yaml file can be confusing and a pain to edit, you probably should have some experience with python/yaml and patience.
 
 So what are the advantages of using this over the web-ui? I know a lot of randomizing can be done in the web-ui, but probably not everything that is done here, haven't tried it myself though. One big advantage is that the resulting workflow is a lot cleaner using this script. Another advantage for me at least is better memory management, I can merge 6 checkpoints no problem where as in the web-ui it would have crashed my computer.
 
