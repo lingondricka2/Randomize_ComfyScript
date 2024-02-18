@@ -30,4 +30,4 @@ To run the randomizer.
 ## Examples
 Cherry picked from 200 generated images
 
-https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0002.png
+![alt text](https://github.com/lingondricka2/Stuff/blob/main/randomizer_images/ComfyUI_0002.png)
