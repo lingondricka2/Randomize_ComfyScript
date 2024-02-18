@@ -1,5 +1,5 @@
 ## About The Project
-The infinite monkey method of creating your perfect workflow for ComfyUI. My first project and it's a work in progress so keep expectations low.
+The infinite monkey method of creating your perfect workflow for ComfyUI. My first project and it's a work in progress so keep expectations low. As it is now the yaml file can be confusing and a pain to edit, probably should have some experience with python/yaml and patience.
 
 ## Prerequisites
 * ComfyScript, install instructions at https://github.com/Chaoses-Ib/ComfyScript
@@ -21,11 +21,17 @@ Edit the yaml file to make it use your models, use:
 ```sh
 python randomizer.py list
 ```
-to get a list of all models, useful when editing the yaml file.
+to get a list of all models, useful when editing the yaml file. The settings in the yaml file is rather conservative right now to avoid images that have artifacts and are too out there, but that can be changed of course.
 ```sh
 python randomizer.py
 ```
 To run the randomizer. The resulting images can be loaded in ComfyUI web-ui.
+
+## TODO
+* A GUI for the settings would be great, but probably not going to happen.
+* Random shape/gradients blending (almost done)
+* Random regional prompts using color segmentation
+* Other small things like random VAE
 
 ## Examples
 Cherry picked from 200 generated images using prompt "monkey typing on a typewriter"
