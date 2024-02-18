@@ -1,0 +1,518 @@
+# Note the script is brittle, no sanity checks are in place, inproper format will most likely cause errors
+
+workflow: 
+  workflows: xl, xl_lcm, sd1_5, sd1_5_lcm # lcm workflows needs to have '_lcm' in the string TODO poor solution, but simple
+  workflow_weights: [60, 30, 5, 5] # workflow weighting TODO should be 0-100?, untested
+  #workflow_weights: [50, 50, 50, 50]
+
+output:
+  images: 10 # number of images to create
+  size_x_xl: 1024
+  size_y_xl: 1024
+  size_x_sd1_5: 512
+  size_y_sd1_5: 512
+  output_folder_name: randomizer
+  add_time_and_date_suffix: True # add to folder name
+
+checkpoints:
+
+  # random = will choose a random checkpoint that does not have merge_chance of 0
+  # merge_checkpoints, 3 = will merge checkpoints based on merge chance, add max num of checkpoints to merge at the end
+  # default = will use default checkpoint
+  mode: merge_checkpoints, 2
+
+  default: xl\turbovisionxlSuperFastXLBasedOnNew_alphaV0101Bakedvae.safetensors
+  checkpoints:
+    - name: xl\thinkdiffusionxl_v10.safetensors
+      type: xl, xl_lcm # what types of workflows are allowed to use this model
+      merge_chance: 50 # chance of merging with another checkpoint, 0 never used, 100 always used
+
+    - name: xl\7Of9Joybringer_v4Joybringer.safetensors
+      type: xl, xl_lcm
+      merge_chance: 50
+
+    - name: xl\dreamshaperXL10_alpha2Xl10.safetensors
+      type: xl, xl_lcm
+      merge_chance: 50
+
+    - name: xl\gleipnir_v20FP16.safetensors
+      type: xl, xl_lcm
+      merge_chance: 50
+
+    - name: xl\hephaistosNextgenxlLCM_v10LCMBF16.safetensors
+      type: xl_lcm
+      merge_chance: 50
+
+    - name: xl\turbovisionxlSuperFastXLBasedOnNew_alphaV0101Bakedvae.safetensors
+      type: xl, xl_lcm
+      merge_chance: 50
+
+    - name: sd1.5\AnythingV5Ink_ink.safetensors
+      type: sd1_5, sd1_5_lcm
+      merge_chance: 50
+
+    - name: sd1.5\V08_V08.safetensors
+      type: sd1_5, sd1_5_lcm
+      merge_chance: 50
+
+    - name: sd1.5\aniverse_v15.safetensors
+      type: sd1_5, sd1_5_lcm
+      merge_chance: 50
+
+    - name: sd1.5\colorful_v31.safetensors
+      type: sd1_5, sd1_5_lcm
+      merge_chance: 50
+
+    - name: sd1.5\eleetModel_v20.safetensors
+      type: sd1_5, sd1_5_lcm
+      merge_chance: 50
+
+    - name: sd1.5\lyriel_v16.safetensors
+      type: sd1_5, sd1_5_lcm
+      merge_chance: 50
+
+    - name: sd1.5\perfectWorld_v6Baked.safetensors
+      type: sd1_5, sd1_5_lcm
+      merge_chance: 50
+
+    - name: sd1.5\perfectdeliberate_v5.safetensors
+      type: sd1_5, sd1_5_lcm
+      merge_chance: 50
+
+    - name: sd1.5\picxReal_10.safetensors
+      type: sd1_5, sd1_5_lcm
+      merge_chance: 50
+
+    - name: sd1.5\realisticVisionV51_v51VAE.safetensors
+      type: sd1_5, sd1_5_lcm
+      merge_chance: 50  
+
+    - name: sd1.5\revAnimated_v122EOL.safetensors
+      type: sd1_5, sd1_5_lcm
+      merge_chance: 50  
+  
+loras:
+  loras:
+    - name: xl\lcm\LCMTurboMix_LCM_Sampler.safetensors
+      type: xl_lcm # what types of workflows are allowed to use this model
+      chance: 100 # chance of being used, 0 never used, 100 always used
+
+      # value, 1.0 = normal float
+      # range, 0.5, 2.0 = range from min to max
+      # normal_variate_range, 1.0, 0.5, 0.5, 2.0 = like range but the first value is more common, the second value increase deviation
+      strength_model: value, 1.0
+      strength_clip: value, 1.0
+
+    - name: xl\add-detail-xl.safetensors
+      type: xl, xl_lcm
+      chance: 70
+      strength_model: range, 0.5, 1.5
+      strength_clip: range, 0.5, 1.5
+
+    - name: xl\SDXL1.0_Essenz-series-by-AI_Characters_Style_BetterPhotography-v1.2-'Skynet'.safetensors
+      type: xl, xl_lcm
+      chance: 0
+      strength_model: range, 0.5, 2.0
+      strength_clip: range, 0.5, 2.0
+
+    - name: xl\lcm\pytorch_lora_weights.safetensors
+      type: xl_lcm
+      chance: 0
+      strength_model: range, 0.5, 1.0
+      strength_clip: range, 0.5, 1.0
+
+    - name: xl\xl_more_art-full_v1.safetensors
+      type: xl, xl_lcm
+      chance: 70
+      strength_model: range, 0.1, 0.5
+      strength_clip: range, 0.1, 0.5
+
+    - name: sd1.5\Gloss_Tweaker_V2.safetensors
+      type: sd1_5, sd1_5_lcm
+      chance: 50
+      strength_model: range, 0.5, 1.0
+      strength_clip: range, 0.5, 1.0
+
+    - name: sd1.5\VisionaryVerse-SD15.safetensors
+      type: sd1_5, sd1_5_lcm
+      chance: 50
+      strength_model: range, 0.5, 1.0
+      strength_clip: range, 0.5, 1.0
+
+    - name: sd1.5\lcm\lcm-lora-sdv1-5_weights.safetensors
+      type: sd1_5_lcm
+      chance: 100
+      strength_model: value, 1.0
+      strength_clip: value, 1.0
+
+    - name: sd1.5\more_details.safetensors
+      type: sd1_5, sd1_5_lcm
+      chance: 50
+      strength_model: range, 0.5, 1.5
+      strength_clip: range, 0.5, 1.5
+   
+positive_prompt:
+  # TODO prompt should be one sentence for now, use random_tokens to add tokens
+  prompt: monkey typing on a typewriter
+  #prompt: cat
+  use_feelinglucky: False # using https://github.com/adieyal/dynamicprompts, using the lexica.art API to create random prompts
+                         # the prompt will be used as a search string, so it should probably not be overly complicated
+                         # Seems you get timeout from server if you use the API too frequent, I tried to inject randomeness into
+                         # the search string, but still get timeouts
+  magicprompt:
+    use: True 
+    device: 0  # Defines the device (*e.g.*, `"cpu"`, `"cuda:1"`, `"mps"`, or a GPU ordinal rank like `1`) on which the model should be loaded.
+    model: Gustavosta/MagicPrompt-Stable-Diffusion # https://github.com/adieyal/sd-dynamic-prompts/blob/main/config/magicprompt_models.txt
+  random_token_chance: 0 # chance 0-100 per token to be added to prompt
+  random_tokens: > 
+    highly detailed, soft skin, soft lighting, photorealistic, expressive, high resolution, digitally enhanced, 8k, studio lighting,
+    high contrast, chiaroscuro lighting technique, high quality, cinematic, 200mm 1.4f macro shot, halation, morning sunlight,
+    smooth light, shot on kodak portra 200, professional photo, surreal, dreamy, Vogue fashion photography, angled shot, midday warm,
+    Nikon D850 105mm, Chiaroscuro, Volumetric lighting, Realistic, By Steve Henderson, by Anna Rose Bain, by Emerico Emre Toth,
+    by Guillaume Seignac
+
+  # off
+  # replace_questionmark = eg (masterpiece:?) -> (masterpiece:1.2) TODO will probably work poorly
+  # all = eg "masterpiece" -> "(masterpiece:1.2)" # will probably work poorly if tokens already weighted, not tested yet
+  token_weighting_mode: all
+  
+  # value = normal float
+  # range, 0.1, 2.0 = range from min to max
+  # normal_variate_range, 1.0, 0.5, 0.1, 2.0 = like range but the first value is more common, the second value increase deviation
+  primary_prompt_weight_values: range, 1.0, 2.0 # higher value = higher chance of getting what you prompted for
+  token_weighting_values: range, 0.1, 1.5
+
+negative_prompt:
+  prompt: worst quality, low quality, normal quality
+  random_token_chance: 10 # chance 0-100 per token to be added to prompt
+  random_tokens: > 
+    ugly, duplicate, morbid, mutilated, out of frame, extra fingers, mutated hands, poorly drawn hands, poorly drawn face, mutation, 
+    deformed, blurry, bad anatomy, bad proportions, extra limbs, cloned face, disfigured, out of frame, ugly, extra limbs, bad anatomy, 
+    gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, mutated hands, fused fingers, 
+    too many fingers, long neck, blurry, depth of field, nsfw
+  token_weighting_mode: all
+  token_weighting_values: range, 0.1, 1.5
+
+embeddings:
+  - name: xl\pos\ziprealism.safetensors
+    type: xl, xl_lcm # what types of workflows are allowed to use this model
+    chance: 50 # chance of being used, 0 never used, 100 always used
+    alignment: positive # [positive, negative, both]
+
+    # value = normal float
+    # range, 0.1, 2.0 = range from min to max
+    # normal_variate_range, 1.0, 0.5, 0.1, 2.0 = like range but the first value is more common, the second value increase deviation
+    values: range, 0.1, 1.5
+
+  - name: xl\neg\ac_neg1.safetensors
+    type: xl, xl_lcm 
+    chance: 50 
+    alignment: negative
+    values: range, 0.1, 1.5
+
+  - name: xl\neg\ac_neg2.safetensors
+    type: xl, xl_lcm 
+    chance: 50 
+    alignment: negative
+    values: range, 0.1, 1.5
+
+  - name: xl\neg\zip2d_neg.safetensors
+    type: xl, xl_lcm 
+    chance: 50 
+    alignment: negative
+    values: range, 0.1, 1.5
+
+  - name: xl\pos\SK_3DRENDER.safetensors
+    type: xl, xl_lcm 
+    chance: 50 
+    alignment: positive
+    values: range, 0.1, 1.5
+
+  - name: xl\pos\SK_ANALOGFILM.safetensors
+    type: xl, xl_lcm 
+    chance: 0
+    alignment: positive 
+    values: range, 0.1, 1.5
+
+  - name: xl\pos\SK_ANIME.safetensors
+    type: xl, xl_lcm 
+    chance: 50 
+    alignment: positive 
+    values: range, 0.1, 1.5
+
+  - name: xl\pos\SK_CINEMATIC.safetensors
+    type: xl, xl_lcm 
+    chance: 50 
+    alignment: positive 
+    values: range, 0.1, 1.5
+
+  - name: xl\pos\SK_COMIC.safetensors
+    type: xl, xl_lcm 
+    chance: 50 
+    alignment: positive 
+    values: range, 0.1, 1.5
+
+  - name: xl\pos\SK_Cyberpunk.safetensors
+    type: xl, xl_lcm 
+    chance: 50 
+    alignment: positive 
+    values: range, 0.1, 1.5
+
+  - name: xl\pos\SK_DIGITALART.safetensors
+    type: xl, xl_lcm 
+    chance: 50 
+    alignment: positive 
+    values: range, 0.1, 1.5
+
+  - name: xl\pos\SK_Fantasy.safetensors
+    type: xl, xl_lcm 
+    chance: 50 
+    alignment: positive 
+    values: range, 0.1, 1.5
+
+  - name: xl\pos\SK_Ghibli.safetensors
+    type: xl, xl_lcm 
+    chance: 50 
+    alignment: positive 
+    values: range, 0.1, 1.5
+
+  - name: xl\pos\SK_VECTORART.safetensors
+    type: xl, xl_lcm 
+    chance: 50 
+    alignment: positive 
+    values: range, 0.1, 0.5
+
+  - name: xl\pos\ZIP2D.safetensors
+    type: xl, xl_lcm 
+    chance: 50 
+    alignment: positive 
+    values: range, 0.1, 1.5
+
+  - name: sd1.5\neg\BadDream.pt
+    type: sd1_5, sd1_5_lcm
+    chance: 50 
+    alignment: negative
+    values: range, 0.1, 1.5
+
+  - name: sd1.5\neg\EasyNegativeV2.safetensors
+    type: sd1_5, sd1_5_lcm
+    chance: 50 
+    alignment: negative
+    values: range, 0.1, 1.5
+
+  - name: sd1.5\neg\Unspeakable-Horrors-Composition-4v.pt
+    type: sd1_5, sd1_5_lcm
+    chance: 50 
+    alignment: negative
+    values: range, 0.1, 1.5
+
+  - name: sd1.5\neg\badhandv4.pt
+    type: sd1_5, sd1_5_lcm
+    chance: 50 
+    alignment: negative
+    values: range, 0.1, 1.5
+
+  - name: sd1.5\neg\epiCPhoto-neg.pt
+    type: sd1_5, sd1_5_lcm
+    chance: 50 
+    alignment: negative
+    values: range, 0.1, 1.5
+
+  - name: sd1.5\pos\epiCPhoto.pt
+    type: sd1_5, sd1_5_lcm
+    chance: 50 
+    alignment: positive
+    values: range, 0.1, 1.5
+
+# standard, 1.3, 1.4, 0.9, 0.2, 0.5 # b1, b2, s1, s2, off_chance # 1 always off, 0 always on
+# range, 0.5, 3.0, 0.5, 3.0, 0.2, 2.0, 0.1, 0.2, 0.5 # [min, max] for b1, b2, s1, s2 and then off_chance
+# normal_variate_range, 1.3, 0.5, 0.5, 3.0, 1.4, 0.7, 0.5, 3.0, 0.9, 0.4, 0.2, 2.0, 0.2, 0.1, 0.1, 0.2, 0.5
+# [mu, sigma, min, max] and then off_chance mu: will lean towards this number, sigma: higher number, higher deviation
+# TODO the format looks awful
+freeu:
+  values: range, 0.6, 1.3, 0.7, 1.4, 0.4, 0.9, 0.1, 0.2, 0.5
+
+#dynamic_thresholding: # https://github.com/mcmonkeyprojects/sd-dynamic-thresholding
+#  chance: 0 # 0 off, 100 always on
+#  mimic_scale: range, 1, 100
+#  threshold_percentile: range, 0.1, 1.0
+
+automaticcfg: # https://github.com/Extraltodeus/ComfyUI-AutomaticCFG
+# really good results from this one
+  chance: 100  # 0 off, 100 always on
+
+
+# if the value is -1 the node will not be used
+# value, -2 
+# range, -10, -1 # min to max
+# normal_variate_range, -2, 0.5, -1, -10 [mu, sigma, min, max] mu: will lean towards this number, sigma: higher number, higher deviation
+clipsetlastlayer:
+  values: range, -5, -1
+
+# shapes and gradients
+# TODO most settings will be set to random in the script due to the large amounts of settings, might change in the future
+#shapes:
+#  blend_with_shape: True
+#  chance: 50
+#  mode_weights: [50, 50, 10, 10, 50] # CR Draw Shape, CR Random Shape Pattern, CR Color Gradient, CR Radial Gradient, Shape from K-sampler
+#  denoise: range, 0.4, 0.9 # used by the k-sampler after blending the latents, will override normal denoise settings below
+
+
+# ksampler
+
+# 1 = seed
+# random = random seed
+seed:
+  values: random
+
+# value, 20
+# range, 10, 30
+# normal_variate_range, 15, 7, 10, 30 [mu, sigma, min, max] mu: will lean towards this number, sigma: higher number, higher deviation
+steps:
+  values: range, 18, 30
+
+# value, 1
+# range, 2, 4
+# normal_variate_range, 7, 3, 2, 10 [mu, sigma, min, max] mu: will lean towards this number, sigma: higher number, higher deviation
+cfg:
+  values: range, 1.5, 10 # 1.5, 6
+
+# value, 1
+# range, 0.8, 1
+# normal_variate_range, 1, 0.5, 0.8, 1 [mu, sigma, min, max] mu: will lean towards this number, sigma: higher number, higher deviation
+denoise:
+  values: value, 1
+
+sampler: # lcm workflow will always use lcm
+  mode: random # random, default   
+  default_sampler: euler
+  lcm_sampler: # will always override steps and cfg settings
+    steps: range, 15, 30
+    cfg: range, 2, 4 #2,5
+  samplers:
+  - name: euler
+    weight: 50 # larger number = higher chance of being choosen
+    override_steps_and_cfg: False
+    steps: range, 18, 30
+    cfg: range, 2, 7
+
+  - name: euler_ancestral
+    weight: 50
+    override_steps_and_cfg: False
+    steps: range, 18, 30
+    cfg: range, 2, 7
+
+  - name: heun
+    weight: 50
+    override_steps_and_cfg: False
+    steps: range, 18, 30
+    cfg: range, 2, 7
+
+  - name: heunpp2
+    weight: 50
+    override_steps_and_cfg: False
+    steps: range, 18, 30
+    cfg: range, 2, 7
+
+  - name: dpm_adaptive
+    weight: 0
+    override_steps_and_cfg: False
+    steps: range, 18, 30
+    cfg: range, 2, 7
+
+  - name: dpm_2
+    weight: 50
+    override_steps_and_cfg: False
+    steps: range, 18, 30
+    cfg: range, 2, 7
+
+  - name: dpmpp_2s_ancestral
+    weight: 50
+    override_steps_and_cfg: False
+    steps: range, 18, 30
+    cfg: range, 2, 7
+
+  - name: dpm_2_ancestral
+    weight: 50
+    override_steps_and_cfg: False
+    steps: range, 18, 30
+    cfg: range, 2, 7
+
+  - name: ddpm
+    weight: 50
+    override_steps_and_cfg: False
+    steps: range, 18, 30
+    cfg: range, 2, 7
+
+  - name: uni_pc
+    weight: 50
+    override_steps_and_cfg: False
+    steps: range, 18, 30
+    cfg: range, 2, 7
+
+  - name: dpmpp_sde
+    weight: 50
+    override_steps_and_cfg: False
+    steps: range, 18, 30
+    cfg: range, 2, 7
+
+  - name: uni_pc_bh2
+    weight: 50
+    override_steps_and_cfg: False
+    steps: range, 18, 30
+    cfg: range, 2, 7
+
+  - name: dpmpp_sde_gpu
+    weight: 50
+    override_steps_and_cfg: False
+    steps: range, 18, 30
+    cfg: range, 2, 7
+
+  - name: ddim
+    weight: 50
+    override_steps_and_cfg: False
+    steps: range, 18, 30
+    cfg: range, 2, 7
+
+  - name: dpmpp_2m
+    weight: 50
+    override_steps_and_cfg: False
+    steps: range, 18, 30
+    cfg: range, 2, 7
+
+  - name: dpmpp_2m_sde
+    weight: 50
+    override_steps_and_cfg: False
+    steps: range, 18, 30
+    cfg: range, 2, 7
+
+  - name: dpmpp_2m_sde_gpu
+    weight: 50
+    override_steps_and_cfg: False
+    steps: range, 18, 30
+    cfg: range, 2, 7
+
+  - name: dpm_fast
+    weight: 0
+    override_steps_and_cfg: False
+    steps: range, 18, 30
+    cfg: range, 2, 7
+
+  - name: lms
+    weight: 0
+    override_steps_and_cfg: False
+    steps: range, 18, 30
+    cfg: range, 2, 7
+
+  - name: dpmpp_3m_sde_gpu
+    weight: 50
+    override_steps_and_cfg: False
+    steps: range, 18, 30
+    cfg: range, 2, 7
+
+# random
+# scheduler name eg 'karras'
+scheduler:
+  values: random
+  schedulers: ["karras", "exponential"]
+  # removed "normal", "ddim_uniform", "sgm_uniform", "simple"
